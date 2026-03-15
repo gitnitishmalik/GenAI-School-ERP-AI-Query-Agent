@@ -13,6 +13,7 @@ except ConnectionFailure:
     print("Could not connect to MongoDB")
     exit()
 
+# Access the database
 db = client["erp_school"]
 
 # Show collections
@@ -21,7 +22,6 @@ print("Collections in database:")
 print(collections)
 
 print("\nDocument counts:")
-
 print("Students:", db.students.count_documents({}))
 print("Teachers:", db.teachers.count_documents({}))
 print("Attendance:", db.attendance.count_documents({}))
@@ -30,7 +30,5 @@ print("Exams:", db.exams.count_documents({}))
 
 # Show sample student
 print("\nSample student document:\n")
-
 student = db.students.find_one()
-
 print(json.dumps(student, indent=2, default=str))
